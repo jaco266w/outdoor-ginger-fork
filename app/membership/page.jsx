@@ -30,7 +30,8 @@ export default function Page() {
     <main>
       <Hero
         // title="Membership"
-        imageSrc="/membershiphero.webp"
+        imageSrc="/membershiphero2.jpeg"
+        objPos="object-bottom"
         height="h-[70vh] md:h-[100vh] max-h-[1000px]"
       >
         <div
