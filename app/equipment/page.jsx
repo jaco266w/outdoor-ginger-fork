@@ -1,5 +1,5 @@
 import Hero from "@/components/generel/Hero";
-import { client } from "@/lib/sanity/client";
+import { forkClient } from "@/lib/sanity/client";
 import ProductCard from "@/components/equipment/ProductCard";
 import SponsorBanner from "@/components/generel/SponsorBanner";
 import MemberBanner from "@/components/generel/MemberBanner";
@@ -7,7 +7,7 @@ import MemberBanner from "@/components/generel/MemberBanner";
 const productQuery =
   '*[_type == "product"]{title, slug, description, mainContent, price, memberPrice, images, tags, category, _id}';
 
-const products = await client.fetch(productQuery, {
+const products = await forkClient.fetch(productQuery, {
   next: {
     revalidate: process.env.NODE_ENV === "development" ? 30 : 3600,
   },
@@ -15,7 +15,7 @@ const products = await client.fetch(productQuery, {
 
 const categoryQuery = '*[_type == "category"]{title, slug, description, _id}';
 
-const categories = await client.fetch(categoryQuery, {
+const categories = await forkClient.fetch(categoryQuery, {
   next: {
     revalidate: process.env.NODE_ENV === "development" ? 30 : 3600,
   },

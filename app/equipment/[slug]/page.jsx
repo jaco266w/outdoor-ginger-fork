@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { client, urlFor } from "@/lib/sanity/client";
+import { forkClient, urlFor } from "@/lib/sanity/client";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import {
@@ -22,7 +22,7 @@ import ProductImageGallery from "@/components/equipment/ProductImageGallery";
 export async function generateStaticParams() {
   const slugQuery = '*["_type" == "product"]{slug}';
 
-  const products = await client.fetch(slugQuery, {
+  const products = await forkClient.fetch(slugQuery, {
     next: {
       revalidate: process.env.NODE_ENV === "development" ? 30 : 3600,
     },
@@ -37,7 +37,9 @@ export default async function Page({ params }) {
   const productQuery =
     '*[_type == "product" && slug.current == $slug]{title, slug, description, body, price, memberPrice, images, tags, category, _id, materials, weight}';
 
-  const productFetch = await client.fetch(productQuery, { slug: params.slug });
+  const productFetch = await forkClient.fetch(productQuery, {
+    slug: params.slug,
+  });
   const product = productFetch[0];
 
   const image = urlFor(product.images[0]).url();
