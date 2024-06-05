@@ -14,6 +14,12 @@ import { forkUrlFor } from "@/lib/sanity/client";
 import useAuthStore from "@/lib/store/authStore";
 import useCartStore from "@/lib/store/cartStore";
 import { toast } from "sonner";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ProductCard({ product }) {
   const { user } = useAuthStore();
@@ -69,11 +75,20 @@ export default function ProductCard({ product }) {
           </CardDescription>
         </div>
         {product.isAffiliate ? (
-          <Link href={product.affiliateLink} target="_blank">
-            <Button variant="primary" className="w-full">
-              Buy on Amazon
-            </Button>
-          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={product.affiliateLink} target="_blank">
+                  <Button variant="primary" className="w-full">
+                    Buy on Amazon
+                  </Button>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>This is an affiliate link</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ) : (
           <Button
             variant="primary"

@@ -28,7 +28,7 @@ export default function AboutMe() {
         height="h-[90vh] md:h-[100vh]"
       >
         <div id="left" className="md:mt-2 w-full mb-8">
-          <p className="text-ogLabel-faint font-light md:text-2xl italic w-max">
+          <p className="text-ogLabel-faint font-light md:text-2xl italic w-max font-display opacity-80">
             &quot;Anything is possible if you dare to be curious&quot;
           </p>
         </div>
