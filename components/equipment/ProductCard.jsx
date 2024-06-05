@@ -37,7 +37,7 @@ export default function ProductCard({ product }) {
               alt={product.title}
               width={300}
               height={300}
-              className="object-cover w-full hover:scale-[102%] transition-all duration-500"
+              className="object-cover w-full hover:scale-[102%] transition-all duration-500 aspect-[8/6]"
             />
           </div>
         </Link>
@@ -68,9 +68,21 @@ export default function ProductCard({ product }) {
             {product.description}
           </CardDescription>
         </div>
-        <Button variant="primary" onClick={handleAddToCart}>
-          Add to cart
-        </Button>
+        {product.isAffiliate ? (
+          <Link href={product.affiliateLink} target="_blank">
+            <Button variant="primary" className="w-full">
+              Buy on Amazon
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            variant="primary"
+            onClick={handleAddToCart}
+            className="w-full"
+          >
+            Add to cart
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

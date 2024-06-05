@@ -5,7 +5,7 @@ import SponsorBanner from "@/components/generel/SponsorBanner";
 import MemberBanner from "@/components/generel/MemberBanner";
 
 const productQuery =
-  '*[_type == "product"]{title, slug, description, mainContent, price, memberPrice, images, tags, category, _id}';
+  '*[_type == "product"]{title, slug, description, mainContent, price, memberPrice, images, tags, category, _id, isAffiliate, affiliateLink}';
 
 const products = await forkClient.fetch(productQuery, {
   next: {
