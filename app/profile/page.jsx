@@ -67,7 +67,9 @@ export default async function PrivatePage() {
                     <p className="text-sm font-medium text-ogLabel-muted">Membership Status</p>
                     <p className="text-2xl font-semibold text-ogLabel-base">Adventurer</p>
                   </div>
-                  <Badge variant="primary">Active</Badge>
+                  <Badge variant="primary" className="bg-ogSuccess-light text-ogBG-base border-none">
+                    Active
+                  </Badge>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-medium text-ogLabel-muted">Membership Expires</p>
@@ -81,9 +83,9 @@ export default async function PrivatePage() {
                     <Badge variant="secondary">Access all Articles</Badge>
                   </div>
                 </div>
-                <form action={logout}>
+                {/* <form action={logout}>
                   <Button type="submit">Log out</Button>
-                </form>
+                </form> */}
               </div>
             </div>
           </div>
