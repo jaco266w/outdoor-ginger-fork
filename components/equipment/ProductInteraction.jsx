@@ -5,8 +5,10 @@ import useAuthStore from "@/lib/store/authStore";
 import useCartStore from "@/lib/store/cartStore";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function ProductInteraction({ product }) {
+	console.log(product);
 	const { user } = useAuthStore();
 	const { cart, addToCart } = useCartStore();
 
@@ -36,13 +38,21 @@ export default function ProductInteraction({ product }) {
 			) : (
 				<h2 className="text-xl font-medium">{product.price} €</h2>
 			)}
-			<Button
-				variant="primary"
-				className="w-fit -mt-6"
-				onClick={handleAddToCart}
-			>
-				Add to cart
-			</Button>
+			{product.isAffiliate ? (
+				<Link href={product.affiliateLink} target="_blank">
+					<Button variant="primary" className="w-fit -mt-6">
+						Buy on Amazon
+					</Button>
+				</Link>
+			) : (
+				<Button
+					variant="primary"
+					className="w-fit -mt-6"
+					onClick={handleAddToCart}
+				>
+					Add to cart
+				</Button>
+			)}
 		</div>
 	);
 }
