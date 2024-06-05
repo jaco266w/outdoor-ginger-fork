@@ -19,10 +19,9 @@ export default function Page() {
     <main>
       <Hero
         title="Campfire Chronicles"
-        imageSrc="/bloghero.webp"
+        imageSrc="/bloghero2.png"
+        objPos="object-bottom"
         height="h-96 md:h-[50vh]"
-        bg="bg-blog"
-        bgPos="bg-center"
         padding="pb-20 md:pb-12"
       >
         <div id="left" className="w-[200%] md:w-full md:mb-12">

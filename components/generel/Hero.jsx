@@ -2,13 +2,14 @@ import React from "react";
 import Image from "next/image";
 
 function Hero({
+  children,
   title,
-  imageSrc,
   height = "h-96 md:h-[80vh]",
   bgPos = "bg-center",
   bg,
-  children,
   padding = "pb-20 md:pb-32",
+  imageSrc,
+  objPos = "object-center",
 }) {
   const leftSideChildren = React.Children.toArray(children).filter(
     (child) => child.props.id === "left",
@@ -39,7 +40,7 @@ function Hero({
           alt=""
           width={1920}
           height={1080}
-          className={`object-cover ${bgPos} w-full h-full absolute top-0 left-0 z-10 outline`}
+          className={`object-cover ${bgPos} ${objPos} w-full h-full absolute top-0 left-0 z-10 outline`}
           placeholder="blur"
           blurDataURL={`${imageSrc}?blur=50`}
           priority={true}
