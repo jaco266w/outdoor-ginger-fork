@@ -57,7 +57,7 @@ export default async function Page({ params }) {
   let brokenTitle;
   if (post[0].Youtube_Short_Title) {
     const title = post[0].Youtube_Short_Title;
-    brokenTitle = breakString(title, 10, 10);
+    brokenTitle = breakString(title, 20, 10);
   }
 
   return (
@@ -103,29 +103,45 @@ export default async function Page({ params }) {
 
           <Paywall post={post} />
         </article>
-        <div className="col-start-2 flex flex-col gap-4 px-8 md:px-0 mb-12 max-w-[650px] md:max-w-[730px] mx-auto md:mt-108">
-          {posts
-            .filter((post) => post.slug.current !== currentPostSlug)
-            .slice(-2)
-            .map((post) => {
-              return <ArticleCard post={post} key={post.slug.current} />;
-            })}
-        </div>
-        <div className="hidden md:block absolute right-[-485px] top-32 bg-ogPrimary w-[800px] pl-10 pb-10 pt-32 h-60 rounded-3xl">
-          {post[0].Youtube_Short_URL && (
-            <div>
+
+        {post[0].Youtube_Short_URL ? (
+          <section className="max-w-sm space-y-8 hidden md:block ">
+            <div className="bg-ogPrimary rounded-3xl  relative">
               <ReelEmbed Youtube_Short_URL={post[0].Youtube_Short_URL} />
               {post[0].Youtube_Short_Title && (
-                <h2 className="capitalize text-4xl font-display font-semibold text-ogPrimary-lightest">
-                  {brokenTitle}
-                </h2>
+                <div className="p-8 pt-20">
+                  <p className="text-sm text-ogPrimary-lighter mb-1 font-medium">
+                    Related video
+                  </p>
+                  <h2 className="capitalize text-2xl font-display font-semibold text-ogPrimary-lightest ">
+                    {brokenTitle}
+                  </h2>
+                </div>
               )}
             </div>
-          )}
-        </div>
+            <ArticlesCards posts={posts} currentPostSlug={currentPostSlug} />
+          </section>
+        ) : (
+          <section className="max-w-sm space-y-8 hidden md:block ">
+            <ArticlesCards posts={posts} currentPostSlug={currentPostSlug} />
+          </section>
+        )}
       </div>
       <NewsletterBanner title="Stay up to date" subtitle="" />
     </main>
+  );
+}
+
+function ArticlesCards({ posts, currentPostSlug }) {
+  return (
+    <div className="col-start-2 flex flex-col gap-4 px-8 md:px-0 mb-12 max-w-[650px] md:max-w-[730px] mx-auto ">
+      {posts
+        .filter((post) => post.slug.current !== currentPostSlug)
+        .slice(-2)
+        .map((post) => {
+          return <ArticleCard post={post} key={post.slug.current} />;
+        })}
+    </div>
   );
 }
 
