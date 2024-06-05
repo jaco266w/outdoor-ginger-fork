@@ -35,8 +35,8 @@ export default function ProductCard({ product }) {
             <Image
               src={forkUrlFor(product.images[0]).url()}
               alt={product.title}
-              width={300}
-              height={300}
+              width={600}
+              height={600}
               className="object-cover w-full hover:scale-[102%] transition-all duration-500 aspect-[8/6]"
             />
           </div>
