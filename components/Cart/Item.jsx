@@ -3,7 +3,7 @@
 import { IconPlus, IconMinus, IconTrash } from "@tabler/icons-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { urlFor } from "@/lib/sanity/client";
+import { forkUrlFor } from "@/lib/sanity/client";
 
 export default function Item({
   imgSrc,
@@ -14,7 +14,7 @@ export default function Item({
   onRemove,
   onRemoveAll,
 }) {
-  const imageUrl = urlFor(imgSrc).url();
+  const imageUrl = forkUrlFor(imgSrc).url();
   return (
     <div className="mb-2">
       <div className="flex flex-col gap-4">
