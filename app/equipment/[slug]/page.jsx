@@ -67,8 +67,8 @@ export default async function Page({ params }) {
         <div className="md:px-8 pb-8">
           <ProductImageGallery imgs={product.images} />
         </div>
-        <div className="flex flex-col gap-4">
-          <h1 className="mb-0 font-bold">{product.title}</h1>
+        <div className="flex flex-col gap-4  ">
+          <h1 className=" font-bold  m-0">{product.title}</h1>
           <ProductInteraction product={product} />
           <PortableText value={product.body} />
           <Accordion type="multiple" collapsible="true" className="w-full my-4">

@@ -22,7 +22,7 @@ export default function ProductInteraction({ product }) {
   }, [cart]);
 
   return (
-    <div className="flex flex-col gap-4 -mt-8">
+    <div className="flex flex-col gap-4">
       {user ? (
         <div className="flex gap-4 items-center">
           <h2 className="text-xl font-medium line-through">
@@ -36,7 +36,7 @@ export default function ProductInteraction({ product }) {
           </div>
         </div>
       ) : (
-        <h2 className="text-xl font-medium">{product.price} €</h2>
+        <h2 className="text-xl font-medium m-0 mb-6">{product.price} €</h2>
       )}
       {product.isAffiliate ? (
         <div className="flex flex-col">
