@@ -89,16 +89,16 @@ function Header() {
         <div className="max-w-7xl overflow-hidden mx-auto  rounded-t-xl z-40 drop-shadow-xl">
           <div className=" w-full h-20 bg-ogBG-base rounded-t-xl flex items-center justify-between px-8 border border-x-neutral-200 border-t-neutral-200 border-b-0 border-opacity-50 mx">
             <motion.div
-              className="opacity-0"
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 2, type: "spring" }}
+              transition={{ duration: 2, type: "spring", delay: 0.5 }}
             >
-              <Link href="/" className="flex">
+              <Link href="/" className="flex -ml-4">
                 <dotlottie-player
                   src="/lottie/iconText.lottie"
                   background="transparent"
                   speed="1"
-                  style={{ width: "150px" }}
+                  style={{ width: "140px" }}
                   direction="1"
                   playMode="bounce"
                   loop
