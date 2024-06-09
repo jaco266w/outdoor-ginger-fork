@@ -126,7 +126,11 @@ function MobileHeader() {
 						<Image src="/icons/logo.svg" width={120} height={120} alt="logo" />
 					</Link>
 					<ul className="flex w-full justify-end items-center text-sm font-normal whitespace-nowrap">
-						<li className="relative">
+						<li
+							className="relative"
+							tabIndex={0}
+							aria-label="Click to open shopping cart"
+						>
 							{totalItems > 0 && (
 								<div className="absolute top-0 right-0 bg-ogPrimary text-ogBG-base rounded-full p-1 text-[10px] font-medium aspect-square w-4 h-4 flex items-center justify-center cursor-default">
 									{totalItems}
@@ -136,11 +140,9 @@ function MobileHeader() {
 								size={35}
 								className={`stroke-[1.5px]  ${cartOpen ? "text-ogPrimary" : "text-ogLabel-base "}`}
 								onClick={toggleCart}
-								tabIndex={0}
-								aria-label="Click to open shopping cart"
 							/>
 						</li>
-						<li>
+						<li tabIndex={0} aria-label="Click to open menu">
 							<dotlottie-player
 								key={isDivVisible}
 								ref={playerRef1}
@@ -155,8 +157,6 @@ function MobileHeader() {
 								}}
 								playMode="normal"
 								onClick={handleClick1}
-								tabIndex={0}
-								aria-label="Click to open menu"
 							></dotlottie-player>
 						</li>
 					</ul>
