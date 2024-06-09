@@ -144,7 +144,7 @@ module.exports = {
         "banner-image": "url('/leftsidedAugust.png')",
         "mobileBanner-image": "url('/orangeAugustInto.png')",
         yourmembership: "url('/yourmembership.webp')",
-        forsideMobil: "url('/forsideheromobil.png')",
+        forsideMobil: "url('/forsideheromobil.webp')",
         forside: "url('/forsidehero2.webp')",
         blog: "url('/bloghero.webp')",
         equipment: "url('/equipmenthero.webp')",
