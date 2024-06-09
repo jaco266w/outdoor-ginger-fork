@@ -13,7 +13,7 @@ module.exports = {
     },
     extend: {
       dropShadow: {
-        'up': '0 -5px 6px rgba(0, 0, 0, 0.2)',
+        up: "0 -5px 6px rgba(0, 0, 0, 0.2)",
       },
       backgroundSize: {
         zoom: "150%",
@@ -143,7 +143,7 @@ module.exports = {
         "footer-image": "url('/footer_img.webp')",
         "banner-image": "url('/leftsidedAugust.png')",
         "mobileBanner-image": "url('/orangeAugustInto.png')",
-        yourmembership: "url('/yourmembership.webp')",
+        yourmembership: "url('/membershiphero.webp')",
         forsideMobil: "url('/forsideheromobil.png')",
         forside: "url('/forsidehero2.webp')",
         blog: "url('/bloghero.webp')",

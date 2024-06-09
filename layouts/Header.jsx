@@ -135,9 +135,7 @@ function Header() {
                           setCartOpen(false);
                         }}
                       >
-                        <Button variant="outline" className="text-ogPrimary border-ogPrimary">
-                          Log out
-                        </Button>
+                        <Button variant="outline">Log out</Button>
                       </Link>
                     </li>
                   ) : null}
