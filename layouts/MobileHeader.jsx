@@ -130,7 +130,7 @@ function MobileHeader() {
 							className="relative"
 							tabIndex={0}
 							aria-label={
-								toggleCart
+								cartOpen
 									? "Click to close shopping cart"
 									: "Click to open shopping cart"
 							}
