@@ -64,6 +64,7 @@ export default async function RootLayout({ children }) {
 			<body className="bg-ogBG-base text-ogLabel-base">
 				<MobileHeader />
 				<Header />
+				<Donation />
 				<AuthSubscriber />
 				<Toaster
 					richColors={true}
@@ -80,7 +81,6 @@ export default async function RootLayout({ children }) {
 				<CookieConsentDialog />
 				{children}
 				<Footer />
-				<Donation />
 			</body>
 		</html>
 	);
