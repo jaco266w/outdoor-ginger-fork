@@ -8,6 +8,7 @@ import useCartStore from "@/lib/store/cartStore";
 import useAuthStore from "@/lib/store/authStore";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function ShoppingCart({ setCartOpen, cartRef }) {
 	const {
@@ -44,6 +45,14 @@ export default function ShoppingCart({ setCartOpen, cartRef }) {
 		setCartOpen(false);
 	};
 
+	const focusRef = useRef();
+
+	useEffect(() => {
+		if (focusRef.current) {
+			focusRef.current.focus();
+		}
+	}, [cart.length]);
+
 	return (
 		<div className="overflow-hidden fixed -top-6 md:top-7 left-0 z-50 md:z-80 w-full px-2 md:px-0 mt-12 max-w-7xl mx-auto md:left-1/2 md:transform md:-translate-x-1/2 h-[100%] pointer-events-none ">
 			<motion.div
@@ -63,21 +72,30 @@ export default function ShoppingCart({ setCartOpen, cartRef }) {
 					<div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-ogBG-base to-transparent pointer-events-none"></div>
 					<div className="px-8 space-y-6 overflow-y-scroll scrollbar scrollbar-thumb-ogPrimary scrollbar-track-ogBG-base pt-24 md:pt-8 pb-8">
 						{cart.length === 0 ? (
-							<p className="text-center text-ogLabel-muted">
+							<p
+								ref={focusRef}
+								className="text-center text-ogLabel-muted"
+								tabIndex={-1} // make it programmatically focusable
+							>
 								Your cart is empty
 							</p>
 						) : (
-							cart.map((product) => (
-								<Item
+							cart.map((product, index) => (
+								<div
 									key={product._id}
-									imgSrc={product.images[0]}
-									name={product.title}
-									price={user ? product.memberPrice : product.price}
-									quantity={product.quantity}
-									onAdd={() => handleAddToCart(product)}
-									onRemove={() => handleRemoveFromCart(product)}
-									onRemoveAll={() => handleRemoveAllFromCart(product)}
-								/>
+									ref={index === 0 ? focusRef : null}
+									tabIndex={-1} // make it programmatically focusable
+								>
+									<Item
+										imgSrc={product.images[0]}
+										name={product.title}
+										price={user ? product.memberPrice : product.price}
+										quantity={product.quantity}
+										onAdd={() => handleAddToCart(product)}
+										onRemove={() => handleRemoveFromCart(product)}
+										onRemoveAll={() => handleRemoveAllFromCart(product)}
+									/>
+								</div>
 							))
 						)}
 					</div>
@@ -85,8 +103,8 @@ export default function ShoppingCart({ setCartOpen, cartRef }) {
 						<div className="bg-neutral-200 md:pb-4">
 							<div className="px-12 pt-4 pb-2 flex flex-col gap-3">
 								<div className=" flex justify-between font-normal">
-									<p>Subtotal</p>
-									<p>
+									<p tabIndex={0}>Subtotal</p>
+									<p tabIndex={0}>
 										{cart
 											.reduce((total, product) => {
 												return (

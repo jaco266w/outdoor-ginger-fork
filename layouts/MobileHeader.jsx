@@ -129,7 +129,11 @@ function MobileHeader() {
 						<li
 							className="relative"
 							tabIndex={0}
-							aria-label="Click to open shopping cart"
+							aria-label={
+								toggleCart
+									? "Click to close shopping cart"
+									: "Click to open shopping cart"
+							}
 							aria-describedby="cart"
 						>
 							<IconShoppingCart
