@@ -144,6 +144,7 @@ function MobileHeader() {
 						</li>
 						<li tabIndex={0} aria-label="Click to open menu">
 							<dotlottie-player
+								aria-label="Click to open menu"
 								key={isDivVisible}
 								ref={playerRef1}
 								src="/lottie/burgerMenu.lottie"
